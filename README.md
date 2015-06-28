@@ -3,9 +3,10 @@
 ## 知识点
 
 * git使用
+* sass
+* kissy
 
 * nginx
-* sass
 * jquery
 * nodejs
 * mongodb

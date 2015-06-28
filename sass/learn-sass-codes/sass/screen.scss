@@ -5,7 +5,7 @@
 
 // 宿主文件 
 
-/**
+/*！加个感叹号，压缩也会输出注释
  * CONTENTS
  *
  * SETTINGS
@@ -60,10 +60,13 @@ p {
 }
 
 .error.instrusion {
-  background-image: url("/image/hacked.png");
+  background-image: image-url('hacked.png');
 }
+
 .serious-error {
   @extend .error;
   border: 1px solid #f00;
 }
+
+@debug compass-env();
 

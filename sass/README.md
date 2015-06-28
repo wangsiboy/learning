@@ -33,6 +33,15 @@ To import your new stylesheets add the following lines of HTML (or equivalent) t
 </head>
 
 ```
+*** css
+can i use 网站
+
+## config.rb
+配置输出的css文件格式
+output_style 
+
+使用相对路径
+relative_assets = true
 
 *语法*
 
@@ -48,6 +57,8 @@ $headline-ff:Braggadocio;
 
 函数
 @function声明
+inline-image('logo.png');
+image-url("logo.png");
 
 代码块
 @mixin  name(params)  {
