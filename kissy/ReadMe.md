@@ -31,11 +31,11 @@ KISSY.use('node',function(S,Node){
 Kissy版本的代码相对于Jquery版本的代码，多了个KISSY.use() 的包裹。
 
 ```
-*整体架构*
+###整体架构
 
 Kissy是由三个部分组成的：Seed、Core、Components。
 
-*Seed 
+* Seed 
 
 种子，seed-min.js
 
@@ -43,7 +43,7 @@ Seed的核心是Loader（即模块加载器），所有的功能模块或Ui组�
 
 Seed还包含lang（工具模块，比如判断变量是否是数组等）、ua（终端判断，写hack和移动终端判断逻辑会用到），这二个部分非常简单，翻翻API就可理解。
 
-*Core
+* Core
 
 Core包含Kissy的核心功能模块，比如非常常用的node（DOM操作）、io（ajax请求）、event（事件操作）、base（基类）等，很多功能模块的api非常像Jquery，熟悉Jquery的同学，上手毫无压力。
 
@@ -51,9 +51,27 @@ Core包含Kissy的核心功能模块，比如非常常用的node（DOM操作）�
 
 promise是promise规范的实现，异步编程优化的优秀工具，已经融入到io操作中，所以也非常重要。
 
-*Components
+* Components
 
 Kissy的组件，比如选项卡、日期选择、异步上传、图表、表单校验、弹出层、编辑器等。
+
+### 模块
+```
+<script>
+    //定义一个模块
+    KISSY.add('demo-mod',function(S,require,exports,module){
+        var Node = require('node');
+        var $ = Node.all;
+        exports.test = function () {
+            $('body').html('CommonJs');
+        };
+    });
+    //使用模块
+    KISSY.use('demo-mod',function(S,demo){
+        demo.test();
+    })
+</script>
+```
 
 ## 学习资源
 
