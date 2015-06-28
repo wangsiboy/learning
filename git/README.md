@@ -12,7 +12,7 @@ git add -A
 git commit -m "first commit"
 
 ### 提交到github
-git remote add origin https://github.com/wangsiboy/qianlifu.git
+git remote add origin https://github.com/wangsiboy/learning.git
 git push -u origin master
 
 OK, 差不多就这样用.

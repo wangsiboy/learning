@@ -1,6 +1,7 @@
 # we don't want push into the repo
 .DS_Store
 .idea
+.sass-cache
 *~
 config.js
 

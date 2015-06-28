@@ -12,8 +12,25 @@ gem sources -a https://ruby.taobao.org/
 gem install sass
 gem install compass
 
+```
+
+*编译*
+
+```
 sass main.scss main.css
+
 compass create learn-sass-init
+cd learn-sass-init
+compass watch
+
+To import your new stylesheets add the following lines of HTML (or equivalent) to your webpage:
+<head>
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
+  <!--[if IE]>
+      <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+  <![endif]-->
+</head>
 
 ```
 
@@ -22,14 +39,12 @@ compass create learn-sass-init
 ```
 sass-convert main.scss main.sass
 
-compass watch
-
 默认utf-8编码
 
 指定编码：@charset “UTF-8”;
 
 声明变量
-$headline-ff:Braggadocio,
+$headline-ff:Braggadocio;
 
 函数
 @function声明
