@@ -1,0 +1,8 @@
+# we don't want push into the repo
+.DS_Store
+.idea
+*~
+config.js
+
+# don't commit log files
+log
