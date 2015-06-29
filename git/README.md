@@ -15,6 +15,8 @@ git commit -m "first commit"
 git remote add origin https://github.com/wangsiboy/learning.git
 git push -u origin master
 
+git pull 同步代码
+
 OK, 差不多就这样用.
 
 
