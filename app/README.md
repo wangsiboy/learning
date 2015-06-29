@@ -1,5 +1,12 @@
 # 综合运用
 
+1. 定义app
+npm init 
+2. express框架
+npm install -g express-generator
+3. 模版引擎
+npm install handlebars
+
 ## 后端
 
 * nodejs驱动
