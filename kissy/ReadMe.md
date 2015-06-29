@@ -31,6 +31,78 @@ KISSY.use('node',function(S,Node){
 Kissy版本的代码相对于Jquery版本的代码，多了个KISSY.use() 的包裹。
 
 ```
+
+### kissy工程构建器 — Bee
+
+[generator-bee](http://gallery.kissyui.com/guide/generator-bee使用教程.html)
+
+* 安装 generator-bee
+
+先安装 yeoman（前端工作流脚手架）和 gulp (前端构建打包工具)： 
+npm install yo gulp -g 
+
+再安装 bee： 
+npm install generato
+
+* 使用 Bee 生成目录和代码
+
+创建个名为bee-demo的目录，进入该目录，运行如下命令：
+yo bee 
+
+bee 脚手架采用gulp 构建工程。所以我们需要gulp将src的模块代码编译到build目录下。
+
+在工程目录下，执行 gulp 命令，就会开始构建，同时会起一个本地的server。
+http://localhost:5555
+
+#### 使用抓包工具线上调试
+
+[Fiddler](http://www.telerik.com/fiddler)、[Charles](http://www.charlesproxy.com/)、[LivePool](http://rehorn.github.io/livepool/)
+
+#### kissy的调试模式
+
+引入seed.js，相当于开启全局debug配置，等价于：KISSY.config('debug',true)
+
+只开启一个包的debug模式
+```
+KISSY.config({
+    packages: [
+        {
+            name: 'bee-demo',
+            base: 'http://apebook.org/bee-demo/build',
+            ignorePackageNameInUri: true,
+            debug: true
+        }
+    ]}
+);
+```
+根据debug配置来配置包路径
+
+可以根据KISSY.config('debug');的值来覆盖包，达到临时调试的目的,同时又不影响线上代码。
+```
+KISSY.config({
+    packages: [
+        {
+            name: 'bee-demo',
+            base: 'http://apebook.org/bee-demo/build/',
+            ignorePackageNameInUri: true
+        }
+    ]}
+);
+
+if(KISSY.config('debug')){
+    KISSY.config({
+        packages: [
+            {
+                name: 'bee-demo',
+                base: '../build',
+                ignorePackageNameInUri: true,
+                combine:false
+            }
+        ]}
+    );
+}
+```
+
 ###整体架构
 
 Kissy是由三个部分组成的：Seed、Core、Components。
@@ -173,27 +245,91 @@ importStyle可以帮助你阻塞地加载所有依赖的样式，这样我们就
 </head>
 ```
 
----
-208
----
+#### 使用combo配置减少请求
 
+**性能优化的黄金法则：尽可能减少http请求，combo可以理解为合并静态资源文件的规则**
 
-### kissy工程构建器 — Bee
+```
+<script src="http://g.tbcdn.cn/kissy/k/1.4.8/??seed-min.js,import-style-min.js" data-config="{combine:true}"></script>
+```
+通过script标签上的 data-config ，可以快速配置kissy的loader，data-config="{combine:true}" 等价于：
+```
+<script>
+    KISSY.config({
+        combine:true
+    );
+</script>
+```
+也等价于：
+```
+<script>
+    KISSY.config('combine',true);
+</script>
+```
+除了可以控制kissy模块的combo，也可以控制业务模块的combo，比如有二个包x、y：
+```
+KISSY.config({
+    // 开启自动 combo 模式
+    combine:true,
+    packages:{
+        x:{
+            base:'http://x.com/biz/'
+        },
+        y:{
+           base:'http://x.com/biz/',
+           // y 包不开启自动 combo
+           combine:false
+        }
+    }
+});
+```
 
-[generator-bee](http://gallery.kissyui.com/guide/generator-bee使用教程.html)
+#### 别名机制
 
-* 安装 generator-bee
+```
+KISSY.config('modules',{
+    'bee-demo/b':{
+        alias:['bee-demo/a']
+    }
+});
+```
+业务模块 require('bee-demo/b') 等价于 require('bee-demo/a')
 
-先安装 yeoman（前端工作流脚手架）和 gulp (前端构建打包工具)： 
-npm install yo gulp -g 
+**modules** 别名配置经常应用于公共模块管理
 
-再安装 bee： 
-npm install generato
+比如 bee-demo 项目中引用了二个组件，组件的模块名称中包含版本号信息，像kg/offline/2.0.0/index，但我们不希望在业务模块 require 时带有版本号，require('kg/offline/index'),那么如何配置呢？
+```
+KISSY.config('modules',{
+    'kg/offline/index':{
+        alias:['kg/offline/2.0.0/index']
+    },
+    'kg/auth/index':{
+        alias:['kg/auth/2.0.0/index']
+    }
+});
+```
 
-* 使用 Bee 生成目录和代码
+#### 使用依赖表控制combo
 
-创建个名为bee-demo的目录，进入该目录，运行如下命令：
-yo bee 
+关键字是 **requires**
+
+```
+KISSY.use('kg/offline/2.0.0/index',function(s,Offline){
+    //use 表单校验组件
+    KISSY.use('kg/auth/2.0.0/index');
+});
+
+KISSY.config('modules',{
+    'kg/offline/2.0.0/index':{
+        requires:['kg/auth/2.0.0/index']
+    }
+});
+```
+
+依赖表 KMD 自动抽取
+
+build目录就存在依赖表文件
+
 
 ## 学习资源
 
