@@ -7,3 +7,6 @@ config.js
 
 # don't commit log files
 log
+
+
+node_modules

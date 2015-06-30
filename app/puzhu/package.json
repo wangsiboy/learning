@@ -1,0 +1,14 @@
+{
+  "name": "aides",
+  "version": "0.0.1",
+  "description": "stock aides",
+  "main": "app.js",
+  "scripts": {
+    "test": "start \"node app\""
+  },
+  "keywords": [
+    "stock"
+  ],
+  "author": "50208308@qq.com",
+  "license": "ISC"
+}
