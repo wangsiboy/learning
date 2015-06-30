@@ -10,5 +10,8 @@
     "stock"
   ],
   "author": "50208308@qq.com",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "connect-bundle": "0.0.5-beta"
+  }
 }
