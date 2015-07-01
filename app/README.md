@@ -10,7 +10,7 @@ npm init
 
 * express框架
 
-npm install -g express-generator
+npm install --save express
 
 * mongoDB 数据库
 
@@ -36,7 +36,7 @@ https://github.com/twbs/bootstrap-sass#c-bower
 
 * connect-bundle
 
-开发、生产、手机不同版本绑定不同的js、css文件。
+开发/生产、PC/手机不同版本绑定不同的js、css文件。
 
 
 

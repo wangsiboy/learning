@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>{{title}}</title>
+	
+	{{#each _bundles.js.head}}
+    	<script src="{{.}}"></script>
+    {{/each}}
+
+	{{#each _bundles.css}}
+		<link rel="stylesheet" href="{{.}}"></script>
+	{{/each}}
+
+</head>
+<body>
+
+	{{#each _bundles.js.beforeBodyClose}}
+		<script src="{{.}}"></script>
+	{{/each}}
+</body>
+</html>

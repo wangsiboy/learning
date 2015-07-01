@@ -13,7 +13,6 @@
  */
 var express = require('express');
 var _ = require('lodash');
-var Loader = require('loader');
 var bodyParser = require('body-parser');
 
 var config = require('./config/app');
@@ -29,7 +28,7 @@ var app = express();
 app.use(express.static(__dirname + '/public'));
 
 // view engine setup
-var handlebars = require('express3-handlebars').create({
+var handlebars = require('express-handlebars').create({
     defaultLayout:'main',
     extname:'.hbs',
     helpers: render_helpers
@@ -118,8 +117,7 @@ mongoose.connect(config.db, opts);
  * 分配static, dynamic helpers
  */
 _.extend(app.locals, {
-  config: config,
-  Loader: Loader
+  config: config
 });
 
 var urlinfo = require('url').parse(config.host);
@@ -175,6 +173,12 @@ app.use(csurf());
 app.use(function(req, res, next){
     res.locals.csrf = req.csrfToken ? req.csrfToken() : '';
     next();
+});
+
+// cheesy mobile detection
+app.use(function(req, res, next){
+    var ua = req.headers['user-agent'] || '';
+    req.isMobile = !!ua.match(/mob/i);
 });
 
 //添加路由

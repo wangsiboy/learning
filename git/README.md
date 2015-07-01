@@ -19,6 +19,24 @@ git pull 同步代码
 
 OK, 差不多就这样用.
 
+常规操作命令
+1)	修改配置 git config –global user.name “wangsiboy”
+2)	克隆现有仓库 git clone URL
+3)	将本地仓库提交到远程 git push origin master
+4)	git add
+5)	git status
+6)	git init 
+7)	git rm –cache test.c
+8)	git commit –m “msg”
+9)	git reset test.c
+10)	git checkout test.c
+11)	git rm test.c
+12)	git reset HEAD test.c 恢复删除
+13)	git rm –cache test.c  只删git仓库中的文件
+误删除后的恢复
+1)	git log  （查看各次的提交信息）
+2)	git checkout commit号  （恢复到未删除前的commint号，此时删除的文件也恢复到磁盘上了）
+3)	git checkout master  (备份好删除的文件后，再回到最新状态)
 
 ## 学习笔记
 
