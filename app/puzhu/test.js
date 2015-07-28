@@ -32,6 +32,10 @@ app.set('port', process.env.PORT || "8080");
 var urlinfo = require('url').parse(config.host);
 config.hostname = urlinfo.hostname || config.host;
 
+
+var url  = "http://api.futu5.com/ad/get-ad/?user_id=198072&web_session_key=HBlXZZTMori4IjlUmDejitx+/kfYlZGZXE7NWKj/xGLSwLey9DxiMzwumdWXH4pfdoPVaEzHZqz6CB9HhZ5LSTvtIaCo4+4Eo/o9iiur9o027Mh9atlRmmKY7NgURVws&client_type=pc&lang=cn&client_token=A90129CA97EE3D5BCA2408FEE4DF41BE"
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     res.status(404);
