@@ -1,0 +1,17 @@
+{
+  "name": "cailian",
+  "version": "1.0.0",
+  "description": "website",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "wangsi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.3",
+    "express3-handlebars": "^0.5.2",
+    "moment": "^2.10.0",
+    "mongoose": "^3.8.24"
+  }
+}
