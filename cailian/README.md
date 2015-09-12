@@ -11,3 +11,7 @@
 /test，存放单元和功能测试用例等
 app.js，应用程序入口文件
 ```
+### 安装
+
+1. bower安装
+全局安装npm install bower –g

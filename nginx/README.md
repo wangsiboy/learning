@@ -1,5 +1,6 @@
 安装 Nginx
 
+
 想在 CentOS 系统上安装 Nginx ，你得先去添加一个资源库，像这样：
 
 vim /etc/yum.repos.d/nginx.repo
@@ -88,4 +89,25 @@ service nginx reload
 
 如果ecs上只放一个网站就直接修改default.conf文件，server_name不变其他修改方法同上。
 
-proxy_pass http://127.0.0.1:8080;
+proxy_pass http://127.0.0.1:8080; 将网站的访问全部转向了8080端口，NodeJS监听8080端口即可
+
+
+
+【新看到的，没试过。安装Nginx只需要执行一段命令：apt-get install nginx。然后重启服务：service nginx restart，刷新网页就能看到提示了。】
+进入 /etc/nginx/sites-available/ 目录设置配置文件。
+
+cd /etc/nginx/sites-available/
+touch ghost.conf
+vim ghost.conf
+3、将以下内容添加进去，然后保存。记得把域名更换成自己的。
+
+server {  
+    listen 80;
+    server_name gh.freehao123.info;
+
+    location / {
+        proxy_set_header   X-Real-IP $remote_addr;
+        proxy_set_header   Host      $http_host;
+        proxy_pass         http://127.0.0.1:2368;
+    }
+}

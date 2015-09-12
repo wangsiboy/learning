@@ -3,7 +3,6 @@
 .idea
 .sass-cache
 *~
-config.js
 
 # don't commit log files
 log
@@ -11,3 +10,4 @@ log
 
 node_modules
 public/vendor
+public/*

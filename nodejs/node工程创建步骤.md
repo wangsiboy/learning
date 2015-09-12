@@ -5,7 +5,7 @@ cd /usr/src
 
 网址为：http://nodejs.org/download 
 wget http://nodejs.org/dist/v0.10.18/node-v0.10.18.tar.gz 
-
+https://nodejs.org/dist/v0.12.7/node-v0.12.7-linux-x64.tar.gz
 tar zxf node-v0.10.18.tar.gz 
 cd node-v0.10.18 
 ./configure 
