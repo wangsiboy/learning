@@ -288,3 +288,4 @@ Ctrl + Alt + S
 Open setting dialog 打开设置对话框
 Ctrl + Tab 
 Switch between tabs and tool window 标签和工具窗的转换（与windows快捷键冲突）
+

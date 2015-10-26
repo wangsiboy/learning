@@ -19,6 +19,9 @@ git pull 同步代码
 
 OK, 差不多就这样用.
 
+git fetch origin master
+git merge origin/master
+
 常规操作命令
 1)	修改配置 git config –global user.name “wangsiboy”
 2)	克隆现有仓库 git clone URL
