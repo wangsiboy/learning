@@ -23,14 +23,14 @@
 cp /etc/nginx/conf.d/default.conf  /etc/nginx/conf.d/default.confbak   #备份原有配置文件
 vi /etc/nginx/conf.d/default.conf   #编辑
 
-index  index.php index.html index.htm;   #增加index.php
+  root           /yunpan/gouche;
 
-系统运维 www.osyunwei.com 温馨提醒：qihang01原创内容©版权所有,转载请注明出处及原文链接
+  index  index.php index.html index.htm;   #增加index.php
+
   # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
   #
   location ~ \.php$ {
-    root           html;
-    fastcgi_pass   127.0.0.1:9000;
+    fastcgi_pass   127.0.0.1:8888;
     fastcgi_index  index.php;
     fastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;
     include        fastcgi_params;
