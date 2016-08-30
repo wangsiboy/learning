@@ -5,6 +5,7 @@ mkdir mongodb_cailian
 cd mongodb_cailian/
 
 ``
+
 $ mkdir log
 
 $ mkdir data
@@ -12,6 +13,7 @@ $ mkdir data
 $ mkdir conf
 
 $ mkdir bin
+
 ``
 
 cp ~/mongo/bin/mongod bin/
