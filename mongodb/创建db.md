@@ -6,8 +6,11 @@ cd mongodb_cailian/
 
 ``
 $ mkdir log
+
 $ mkdir data
+
 $ mkdir conf
+
 $ mkdir bin
 ``
 
