@@ -3,10 +3,13 @@
 mkdir mongodb_cailian
 
 cd mongodb_cailian/
-sideMacBook-Air:mongodb_cailian si$ mkdir log
-sideMacBook-Air:mongodb_cailian si$ mkdir data
-sideMacBook-Air:mongodb_cailian si$ mkdir conf
-sideMacBook-Air:mongodb_cailian si$ mkdir bin
+
+``
+$ mkdir log
+$ mkdir data
+$ mkdir conf
+$ mkdir bin
+``
 
 cp ~/mongo/bin/mongod bin/
 
